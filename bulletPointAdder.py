@@ -13,6 +13,7 @@ for i in range(len(lines)):  # loop through all indexes in the "lines" lis
 text = '\n'.join(lines)
 
 pyperclip.copy(text)
+print("Text has been copied to the clipboard")
 
 
 
