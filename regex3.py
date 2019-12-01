@@ -29,7 +29,7 @@ print()
 greedyHaRegex = re.compile(r'(Ha){3,5}')
 mo6 = greedyHaRegex.search('HaHaHaHaHaHa')
 print(mo6.group())
-
+4
 nongreedyHaRegex = re.compile(r'(Ha){3,5}?')
 mo7 = nongreedyHaRegex.search('HaHaHaHaHaHa')
 print(mo7.group())
