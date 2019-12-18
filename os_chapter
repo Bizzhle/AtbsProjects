@@ -1,0 +1,159 @@
+# os and shelve 
+>>> import os
+>>> os.getcwd()
+'C:\\Users\\dusty\\AppData\\Local\\Programs\\Python\\Python37'
+>>> path = 'c:\\Windows\\System32\\calc.exe'
+>>> os.path.basename(path)
+'calc.exe'
+>>> os.path.dirname(path)
+'c:\\Windows\\System32'
+>>> calcFilePath = 'c:\\Windows\\System32\\calc.exe'
+>>> os.path.split(calcFilePath)
+('c:\\Windows\\System32', 'calc.exe')
+>>> calcFilePath.split(os.path.sep)
+['c:', 'Windows', 'System32', 'calc.exe']
+>>> totalSize = 0
+>>> for filename in os.listdidr('C:\\Windows\\System32'):
+	totalSize = totalSize + os.path.getSize(os.path.join('C:\\Windows\\System32', filename))4
+	
+SyntaxError: invalid syntax
+>>> for filename in os.listdidr('C:\\Windows\\System32'):
+	totalSize = totalSize + os.path.getSize(os.path.join('C:\\Windows\\System32', filename))
+
+	
+Traceback (most recent call last):
+  File "<pyshell#12>", line 1, in <module>
+    for filename in os.listdidr('C:\\Windows\\System32'):
+AttributeError: module 'os' has no attribute 'listdidr'
+>>> for filename in os.listdir('C:\\Windows\\System32'):
+	totalSize = totalSize + os.path.getSize(os.path.join('C:\\Windows\\System32', filename))
+
+	
+Traceback (most recent call last):
+  File "<pyshell#14>", line 2, in <module>
+    totalSize = totalSize + os.path.getSize(os.path.join('C:\\Windows\\System32', filename))
+AttributeError: module 'ntpath' has no attribute 'getSize'
+>>> for filename in os.listdir('C:\\Windows\\System32'):
+	totalSize = totalSize + os.path.getsize(os.path.join('C:\\Windows\\System32', filename))
+
+	
+
+>>> 
+>>> print(totalSize)
+2329453850
+>>> os.path.ex('D:\\')
+Traceback (most recent call last):
+  File "<pyshell#19>", line 1, in <module>
+    os.path.ex('D:\\')
+AttributeError: module 'ntpath' has no attribute 'ex'
+>>> os.path.exists('D:\\')
+False
+>>> 
+>>> helloFile = open('C:\\Users\\dusty\\Desktop\\hello.txt')
+>>> helloFile = open('C:\\Users\\dusty\\Desktop\\hello.txt')
+>>> helloContent = helloFile.read()
+>>> helloContent
+'Hello World!'
+>>> sonnetFile = open('C:\\Users\\dusty\\Desktop\\sonnet29.txt')
+>>> sonnetContent = sonnetFile.readlines()
+>>> sonnetContent
+["When, in disgrace with fortune and men's eyes,\n", 'I all alone beweep my outcast state,\n', 'And trouble deaf heaven with my bootless cries,\n', 'And look upon myself and curse my fate,']
+>>> for lines in sonnetContent:
+	print(lines)
+
+	
+When, in disgrace with fortune and men's eyes,
+
+I all alone beweep my outcast state,
+
+And trouble deaf heaven with my bootless cries,
+
+And look upon myself and curse my fate,
+>>> 
+>>> baconFile = open('bacon.txt' 'w')
+Traceback (most recent call last):
+  File "<pyshell#33>", line 1, in <module>
+    baconFile = open('bacon.txt' 'w')
+FileNotFoundError: [Errno 2] No such file or directory: 'bacon.txtw'
+>>> baconFile = open('bacon.txt', 'w')
+>>> baconFile.write('Hello World!\n')
+13
+>>> baconFile.close()
+>>> baconFile = open('bacon.txt', 'a')
+>>> baconFile.write('Bacon is not a vegetable.')
+25
+>>> baconFile.close()
+>>> baconFile = open('bacon.txt')
+>>> baconContent = baconFile.read()
+>>> baconContent
+'Hello World!\nBacon is not a vegetable.'
+>>> baconFile.close()
+>>> print(baconContent)
+Hello World!
+Bacon is not a vegetable.
+>>> os.path.abspath('bacon.txt')
+'C:\\Users\\dusty\\AppData\\Local\\Programs\\Python\\Python37\\bacon.txt'
+>>> 'C:\\Users\\dusty\\AppData\\Local\\Programs\\Python\\Python37\\bacon.txt'
+'C:\\Users\\dusty\\AppData\\Local\\Programs\\Python\\Python37\\bacon.txt'
+>>> 
+>>> 
+>>> import shelve
+>>> shelfFile = shelve.open('mydata')
+>>> cats = ['Zophie', 'Pooka', 'Simon']
+>>> shelfFile['cats'] = cats
+>>> shelfFile.close()
+>>> os.getcwd()
+'C:\\Users\\dusty\\AppData\\Local\\Programs\\Python\\Python37'
+>>> 
+>>> shelfFile = shelve.open('mydata')
+>>> type(shelfFile)
+<class 'shelve.DbfilenameShelf'>
+>>> shelfFile['cats']
+['Zophie', 'Pooka', 'Simon']
+>>> 
+>>> 
+>>> shelfFile.close()
+>>> 
+>>> shelfFile = shelve.open('mydata')
+>>> list(shelfFile.keys())
+['cats']
+>>> list(shelfFile.values())
+[['Zophie', 'Pooka', 'Simon']]
+>>> shelfFile.close
+<bound method Shelf.close of <shelve.DbfilenameShelf object at 0x0000016F2ED9C978>>
+>>> shelfFile.close()
+>>> 
+>>> import pprint
+>>> cats = [{'name: 'Zophie', 'desc':  'chubby'}, {'name': 'Pooka', 'desc': 'fluffy'}]
+	 
+SyntaxError: invalid syntax
+>>> cats = [{'name': 'Zophie', 'desc':  'chubby'}, {'name': 'Pooka', 'desc': 'fluffy'}]
+>>> pprint.pformat(cats)
+"[{'desc': 'chubby', 'name': 'Zophie'}, {'desc': 'fluffy', 'name': 'Pooka'}]"
+>>> 
+>>> fileObj = open('mycats.py', 'w')
+>>> fileObj.write('cats = ' + pprint.pformat(cats) + '\n)
+	      
+SyntaxError: EOL while scanning string literal
+>>> fileObj.write('cats = ' + pprint.pformat(cats) + '\n')
+83
+>>> fileObj.close()
+>>> 
+>>> import mycats
+>>> mycats.cats
+[{'desc': 'chubby', 'name': 'Zophie'}, {'desc': 'fluffy', 'name': 'Pooka'}]
+>>> mycats.cats[0]
+{'desc': 'chubby', 'name': 'Zophie'}
+>>> mycats.cats[0][name]
+Traceback (most recent call last):
+  File "<pyshell#82>", line 1, in <module>
+    mycats.cats[0][name]
+NameError: name 'name' is not defined
+>>> 
+>>> mycats.cats[0]['name']
+'Zophie'
+>>> 
+>>> os.path.abspath('pythonScripts.bat')
+'C:\\Users\\dusty\\AppData\\Local\\Programs\\Python\\Python37\\pythonScripts.bat'
+>>> os.path.abspath('pythonScripts.bat')
+'C:\\

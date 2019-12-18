@@ -1,0 +1,20 @@
+import shutil, os
+
+>> shutil.copy('C:\\Users\\Dusty\\Desktop\\AtbsProjects\\capitalsquiz1.txt', 'C:\\Users\\Dusty\\Desktop')
+'C:\\Users\\Dusty\\Desktop\\capitalsquiz1.txt'
+>>> shutil.copy('C:\\Users\\Dusty\\Desktop\\AtbsProjects\\capitalsquiz1.txt', 'C:\\Users\\Dusty\\Desktop\\capitalsquiz15.txt')
+'C:\\Users\\Dusty\\Desktop\\capitalsquiz15.txt'
+>>> 
+
+shutil.copy - copies files to the the folder specified
+2nd example copies files to folders but also renames them as well
+
+shutil.copytree() copies the whole folder
+shutil.move will move a path or folder to destination specified - move should be carefully used
+
+ import send2trash
+>>> send2trash.send2trash('capitalsquiz15.txt')
+>>> send2trash.send2trash('C:\\Users\\Dusty\\Desktop\\capitalsquiz15.txt')
+
+send2trash deletes a file and send to bin instead of permanently
+

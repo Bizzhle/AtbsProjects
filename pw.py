@@ -2,11 +2,13 @@
 # pw.py - An insecure password locker program.
 
 PASSWORDS = {'Email': 'F7minlBDDuvMJuxESSKHFhTxFtjvB6',
-             'blog': 'VmALvQyKAxiVH5G8v01if1MLZF3sdt',
-             'luggage': '12345'}
+           'blog': 'VmALvQyKAxiVH5G8v01if1MLZF3sdt',
+           'luggage': '12345'}
 
     
-import sys, pyperclip 
+import pyperclip, sys
+
+
 if len(sys.argv) < 2:
     print('Usage: python pw.py [account] - copy account password')
     sys.exit()
